@@ -72,7 +72,7 @@ function App() {
     console.error("API 호출 에러:", error);
   }
   setLoading(false)
-}, [city, API_KEY]);
+}, [city]);
 
 
 
