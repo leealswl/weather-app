@@ -19,7 +19,7 @@ function App() {
   const [city,setCity]=useState('')
   const cities=['paris','new york','tokyo','swiss']
   const [loading, setLoading]=useState(false)
-  const [mapPosition, setMapPosition] = useState(null);
+  // const [mapPosition, setMapPosition] = useState(null);
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -75,7 +75,7 @@ function App() {
 
 
   useEffect(()=>{
-    if(city==''){
+    if(city===''){
       getCurrentLocation()
     }
     else {getWeatherByCity()}
