@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import './App.css';
 import WeatherBox from './component/WeatherBox';
 import WeatherButton from './component/WeatherButton';
@@ -21,7 +21,7 @@ function App() {
   const [loading, setLoading]=useState(false)
   // const [mapPosition, setMapPosition] = useState(null);
 
-  const getCurrentLocation = () => {
+  const getCurrentLocation = useCallback(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -30,13 +30,14 @@ function App() {
           getLocation(lat, lon);
         },
         (error) => {
-          console.error("Geolocation error:", error);
+          console.error("에러", error);
         }
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  };
+  
+  }, []);
 
   const getLocation=async(lat,lon)=>{
     let url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
@@ -52,7 +53,7 @@ function App() {
     setLoading(false)
   }
 
-  const getWeatherByCity=async()=>{
+  const getWeatherByCity=useCallback(async()=>{
     try {
       let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       setLoading(true)
@@ -71,7 +72,8 @@ function App() {
     console.error("API 호출 에러:", error);
   }
   setLoading(false)
-};
+}, [city, API_KEY]);
+
 
 
   useEffect(()=>{
@@ -80,8 +82,9 @@ function App() {
     }
     else {getWeatherByCity()}
   
-  },[city])
+  },[city, getCurrentLocation, getWeatherByCity])
 
+ 
 
   return (
     <div className="App">
