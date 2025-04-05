@@ -31,7 +31,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 18px; 
+  font-size: 18px ; 
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
@@ -50,17 +50,17 @@ body {
 }
 
 .location {
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 10px;
 }
 
 .temperature {
-  font-size: 3rem;
+  font-size: 5rem;
   margin-bottom: 15px;
 }
 
 .description {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 400;
   text-transform: capitalize; 
 }
@@ -75,11 +75,9 @@ body {
 
 .weather-button button {
   margin-right: 10px;
-  font-size: 1.2rem;        
-  padding: 5px 10px;        
-  height: 40px;             
-
-
+  font-size: 1.8rem;        /* 글자 크기 증가 */
+  padding: 10px 20px;       /* 패딩 증가 */
+  height: 60px;             /* 버튼 높이 증가 */
 }
 .weather-button button:hover {
   background-color: #ffffff; 
