@@ -91,7 +91,6 @@ function App() {
       </div>
       ) :(
       <div className='container'>
-      
         <WeatherBox weather={weather}/>
         <WeatherButton cities={cities} setCity={setCity}/>
       </div>)}
