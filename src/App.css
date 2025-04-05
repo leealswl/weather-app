@@ -85,9 +85,7 @@ body {
   color: #000000;            
 }
 
-.weather-button button:last-child {
-  margin-right: 0;
-}
+
 
 
 @media (max-width: 768px) {
