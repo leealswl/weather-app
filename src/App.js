@@ -19,19 +19,7 @@ function App() {
   const [city,setCity]=useState('')
   const cities=['seoul','paris','new york','tokyo','swiss']
   const [loading, setLoading]=useState(false)
-  const [weeklyWeather, setWeeklyWeather] = useState(null);
 
-
-  const getWeeklyWeather = async (lat, lon) => {
-    try {
-      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely,current,alerts&appid=${API_KEY}&units=metric`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setWeeklyWeather(data.daily);
-    } catch (error) {
-      console.error("주간 날씨 API 호출 에러:", error);
-    }
-  };
   const getCurrentLocation = useCallback(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -58,7 +46,6 @@ function App() {
     let data=await res.json()
     // console.log("겟로케이샨",data)
     setWeather(data)
-    getWeeklyWeather(lat, lon);
     } catch(error){
       console.log("API 호출 에러:", error)
     }
@@ -76,13 +63,11 @@ function App() {
     let data=await res.json()
     console.log("겟시티",data)
     setWeather(data)
-    if (data.coord && data.coord.lat && data.coord.lon) {
-      getWeeklyWeather(data.coord.lat, data.coord.lon);
-    }
+   
   } catch (error) {
-    console.error("도시 날씨 API 호출 에러:", error);
+    console.error("API 호출 에러:", error);
   }
-  setLoading(false);
+  setLoading(false)
 }, [city]);
 
 
@@ -107,8 +92,7 @@ function App() {
       ) :(
       <div className='container'>
       
-        
-        <WeatherBox weather={weather} weeklyWeather={weeklyWeather} />
+        <WeatherBox weather={weather}/>
         <WeatherButton cities={cities} setCity={setCity}/>
       </div>)}
     </div>
