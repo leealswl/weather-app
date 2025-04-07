@@ -1,20 +1,29 @@
-import React from 'react'
+import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const WeatherButton = ({cities,setCity}) => {
-  // console.log("도시",cities)
+const WeatherButton = ({ cities, setCity, city }) => {
   return (
     <div className='weather-button'>
-      <Button variant="primary"onClick={()=>setCity('')} >current location</Button>
-      
-    {cities.map((city,index)=>
-    <Button variant="primary" key={index} 
-    onClick={()=>setCity(city)}>{city}</Button>
-      )}
-
-  
+      {/* 현재 위치 버튼: city가 빈 문자열이면 선택된 것으로 간주 */}
+      <Button
+        variant="primary"
+        onClick={() => setCity('')}
+        className={city.trim() === '' ? 'active' : ''}
+      >
+        current location
+      </Button>
+      {cities.map((c, index) => (
+        <Button
+          variant="primary"
+          key={index}
+          onClick={() => setCity(c)}
+          className={city.toLowerCase() === c.toLowerCase() ? 'active' : ''}
+        >
+          {c}
+        </Button>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default WeatherButton
+export default WeatherButton;

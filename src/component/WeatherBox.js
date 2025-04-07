@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WeatherBox = ({weather, weeklyWeather }) => {
+const WeatherBox = ({weather}) => {
 
     console.log("웨더박스",weather)
     const celsiusToFahrenheit=(celsius)=> {

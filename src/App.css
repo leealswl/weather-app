@@ -75,9 +75,9 @@ body {
 
 .weather-button button {
   margin-right: 10px;
-  font-size: 1.8rem;        /* 글자 크기 증가 */
-  padding: 10px 20px;       /* 패딩 증가 */
-  height: 60px;             /* 버튼 높이 증가 */
+  font-size: 1.8rem;        
+  padding: 10px 20px;       
+  height: 60px;             
 }
 .weather-button button:hover {
   background-color: #ffffff; 
@@ -85,23 +85,47 @@ body {
   color: #000000;            
 }
 
+.weather-button button.active {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #000000 !important;
+}
 
 
 
 @media (max-width: 768px) {
+  .location {
+    font-size: 3rem; /* 줄어든 폰트 크기 */
+  }
+  .temperature {
+    font-size: 4rem;
+  }
+  .description {
+    font-size: 4rem;
+  }
   .weather-button button {
     min-width: 80px;
     min-height: 48px;
-    font-size: 1.2rem;
+    font-size: 1rem; /* 줄어든 글자 크기 */
     margin: 10px;
   }
 }
 
+/* 미디어 쿼리: 화면 너비 480px 이하일 때 */
 @media (max-width: 480px) {
+  .location {
+    font-size: 2.5rem;
+  }
+  .temperature {
+    font-size: 3.5rem;
+  }
+  .description {
+    font-size: 3.5rem;
+  }
   .weather-button button {
-    min-width: 100px;
-    min-height: 56px;
-    font-size: 1.3rem;
-    margin: 10px;
+    min-width: 70px;
+    min-height: 40px;
+    font-size: 0.9rem;
+    margin: 8px;
   }
 }
